@@ -39,6 +39,11 @@ namespace WebHost
 
             app.UseCors(CorsOptions.AllowAll);
             
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.File(@"log.txt")
+                .CreateLogger();
+            
             ConfigureIdentityProviders(app, "Cookie");
             
             app.Map("/core", idsrvApp =>
