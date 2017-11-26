@@ -17,8 +17,8 @@ document.getElementById("api").addEventListener("click", api, false);
 document.getElementById("logout").addEventListener("click", logout, false);
 
 var config = {
-    //authority: "https://localhost:5000/core",
-    authority: "https://priveravardgivaremikael.vgregion.se/core",
+    authority: "http://localhost:5000",
+    //authority: "https://priveravardgivaremikael.vgregion.se/core",
     client_id: "js",
     redirect_uri: "http://localhost:5003/callback.html",
     response_type: "id_token token",

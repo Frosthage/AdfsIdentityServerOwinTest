@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{2900
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaScript", "JavaScript\JavaScript.csproj", "{4D2E2EE2-F3CD-4CC1-A57F-1A3EF35CCB77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickstartIdentityServer", "QuickstartIdentityServer\QuickstartIdentityServer.csproj", "{F4B5DDE2-735B-4DCF-B5CC-B46A79702FB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{4D2E2EE2-F3CD-4CC1-A57F-1A3EF35CCB77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D2E2EE2-F3CD-4CC1-A57F-1A3EF35CCB77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D2E2EE2-F3CD-4CC1-A57F-1A3EF35CCB77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4B5DDE2-735B-4DCF-B5CC-B46A79702FB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4B5DDE2-735B-4DCF-B5CC-B46A79702FB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4B5DDE2-735B-4DCF-B5CC-B46A79702FB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4B5DDE2-735B-4DCF-B5CC-B46A79702FB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
