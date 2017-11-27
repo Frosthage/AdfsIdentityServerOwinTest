@@ -3,6 +3,7 @@
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace QuickstartIdentityServer
@@ -21,6 +22,17 @@ namespace QuickstartIdentityServer
                 .AddInMemoryApiResources(Config.GetApiResources())
                 .AddInMemoryClients(Config.GetClients())
                 .AddTestUsers(Config.GetUsers());
+            
+            
+            services.AddAuthentication()
+                .AddWsFederation(options =>
+                {
+                    options.Wtrealm = "https://priveravardgivaremikael.vgregion.se/";
+                    options.MetadataAddress = "https://win-i5vs66s3gnb.priveramikael.com/federationmetadata/2007-06/federationmetadata.xml";
+                    options.UseTokenLifetime = true;
+                    //options.CallbackPath = new PathString("/ExternalLoginCallback");
+                });
+            
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -32,7 +44,6 @@ namespace QuickstartIdentityServer
 
             app.UseCors(x => x.AllowAnyOrigin());
             app.UseIdentityServer();
-            
             
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();

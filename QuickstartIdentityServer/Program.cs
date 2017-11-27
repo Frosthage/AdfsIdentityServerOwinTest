@@ -4,6 +4,9 @@
 using System;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Events;
 
 namespace QuickstartIdentityServer
 {
@@ -12,13 +15,31 @@ namespace QuickstartIdentityServer
         public static void Main(string[] args)
         {
             Console.Title = "IdentityServer";
-
+            
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .MinimumLevel.Override("System", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .WriteTo.File(@"c:\logs\idsrv_log.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+            
+            //log.Debug("Start!!!");
+            
+            
             BuildWebHost(args).Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .ConfigureLogging(builder =>
+                {
+                    builder.ClearProviders();
+                    builder.AddSerilog();
+                })
                 .Build();
     }
 }

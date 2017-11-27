@@ -35,45 +35,30 @@ namespace QuickstartIdentityServer
             // client credentials client
             return new List<Client>
             {
-                new Client
-                {
-                    ClientId = "client",
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-
-                    ClientSecrets = 
-                    {
-                        new Secret("secret".Sha256())
-                    },
-                    AllowedScopes = { "api1" }
-                },
-
-                // resource owner password grant client
-                new Client
-                {
-                    ClientId = "ro.client",
-                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-
-                    ClientSecrets = 
-                    {
-                        new Secret("secret".Sha256())
-                    },
-                    AllowedScopes = { "api1" }
-                },
-
+//                authority: "https://priveravardgivaremikael.vgregion.se",
+//                client_id: "js",
+//                redirect_uri: "http://localhost:5003/callback.html",
+//                response_type: "id_token token",
+//                scope:"openid profile",
+//                post_logout_redirect_uri : "http://localhost:5003/index.html"
+                
                 // OpenID Connect implicit flow client (MVC)
                 new Client
                 {
-                    ClientId = "mvc",
-                    ClientName = "MVC Client",
+                    ClientId = "js",
+                    ClientName = "JavaScript Client",
                     AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
 
-                    RedirectUris = { "http://localhost:5002/signin-oidc" },
-                    PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc" },
+                    RedirectUris =           { "http://localhost:5003/callback.html" },
+                    PostLogoutRedirectUris = { "http://localhost:5003/index.html" },
+                    AllowedCorsOrigins =     { "http://localhost:5003" },
 
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "api1"
                     }
                 }
             };
